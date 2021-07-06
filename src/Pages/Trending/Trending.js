@@ -13,10 +13,10 @@ function Trending() {
       `https://api.themoviedb.org/3/trending/all/day?api_key=22b7a82b91bdec936e76181ba1c46929&page=${page}`
     );
     setContent(data.results);
-    console.log(data.results);
   };
   useEffect(() => {
     fetchTrending();
+    // eslint-disable-next-line
   }, [page]);
   return (
     <div>
