@@ -5,19 +5,19 @@ import "./Trending.css";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 
 function Trending() {
-  // eslint-disable-next-line
   const [content, setContent] = useState([]);
+  const [page, setPage] = useState(1);
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=22b7a82b91bdec936e76181ba1c46929`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=22b7a82b91bdec936e76181ba1c46929&page=${page}`
     );
     setContent(data.results);
     console.log(data.results);
   };
   useEffect(() => {
     fetchTrending();
-  }, []);
+  }, [page]);
   return (
     <div>
       <span className="pageTitle">Trending</span>
@@ -35,7 +35,7 @@ function Trending() {
             />
           ))}
       </div>
-      <CustomPagination />
+      <CustomPagination setPage={setPage} />
     </div>
   );
 }
