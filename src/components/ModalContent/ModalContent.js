@@ -46,7 +46,6 @@ export default function ModalContent({ children, media_type, id }) {
       `https://api.themoviedb.org/3/${media_type}/${id}?api_key=22b7a82b91bdec936e76181ba1c46929&language=en-US`
     );
     setContent(data);
-    console.log(data);
   };
 
   const fetchVideo = async () => {
@@ -60,6 +59,7 @@ export default function ModalContent({ children, media_type, id }) {
   useEffect(() => {
     fetchData();
     fetchVideo();
+    // eslint-disable-next-line
   }, []);
 
   return (
